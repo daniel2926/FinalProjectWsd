@@ -1,20 +1,25 @@
 package Final.wsd.Life.Coffe.discount;
 
-public class FixDiscountPolicy {
+import Final.wsd.Life.Coffe.member.Grade;
+import Final.wsd.Life.Coffe.member.Member;
+
+public class FixDiscountPolicy implements DiscountPolicy {
 
     private int discountFixAmountSilver = 7500;
     private int discountFixAmountGOLD = 12500;
 
+
     @Override
-    public int discount(Member member, int price) {
+    public int discountSilver(Member member, int price) {
         if(member.getGrade() == Grade.SILVER){
             return discountFixAmountSilver;
         } else {
             return 0;
         }
     }
+
     @Override
-    public int discount(Member member, int price) {
+    public int discountGold(Member member, int price) {
         if(member.getGrade() == Grade.GOLD){
             return discountFixAmountGOLD;
         } else {
@@ -22,4 +27,6 @@ public class FixDiscountPolicy {
         }
     }
 
-}
+
+    }
+
