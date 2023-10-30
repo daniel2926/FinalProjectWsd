@@ -1,13 +1,13 @@
 package Final.wsd.Life.Coffe.order;
 
 public class Order {
-    private Long memberId;
+    private String size;
     private String itemName;
     private int itemPrice;
     private int discountPrice;
 
-    public Order(Long memberId, String itemName, int itemPrice, int discountPrice) {
-        this.memberId = memberId;
+    public Order(String size, String itemName, int itemPrice, int discountPrice) {
+        this.size = size;
         this.itemName = itemName;
         this.itemPrice = itemPrice;
         this.discountPrice = discountPrice;
@@ -17,8 +17,8 @@ public class Order {
         return itemPrice - discountPrice;
     }
 
-    public Long getMemberId() {
-        return memberId;
+    public String getSize() {
+        return size;
     }
 
     public void setItemName(String itemName) {
@@ -36,7 +36,7 @@ public class Order {
     @Override
     public String toString() {
         return "Order{" +
-                "memberId=" + memberId +
+                "size=" + size +
                 ",itemName='" + itemName + "\'" +
                 ", itemPrice=" + itemPrice +
                 ", discountPrice=" + discountPrice + '}';
