@@ -3,9 +3,12 @@ package Final.wsd.Life.Coffe.service;
 import Final.wsd.Life.Coffe.member.Member;
 import Final.wsd.Life.Coffe.member.MemberRepository;
 import Final.wsd.Life.Coffe.member.MemoryMemberRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+
+@Transactional
 
 public class MemberService{
     private final MemberRepository memberRepository = new MemoryMemberRepository();
@@ -38,4 +41,4 @@ public class MemberService{
         }
     }
 
-}
+
