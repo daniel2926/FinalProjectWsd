@@ -25,7 +25,7 @@ public class MemberService{
         private void validDuplicateMember(Member member) {
             Optional<Member> result = memberRepository.findByName(member.getName());
             result.ifPresent(m -> {
-                throw new IllegalStateException("You are already a member.");
+                throw new IllegalStateException("You are already a member ");
             });
         }
 
