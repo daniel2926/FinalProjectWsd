@@ -3,6 +3,7 @@ package Final.wsd.Life.Coffe.service;
 import Final.wsd.Life.Coffe.member.Member;
 import Final.wsd.Life.Coffe.member.MemberRepository;
 import Final.wsd.Life.Coffe.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -11,10 +12,10 @@ import java.util.Optional;
 @Transactional
 
 public class MemberService{
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
-    private final MemberRepository memberRepository;
 
-    public MemberService(MemberRepository memberRepository){
+    private final MemoryMemberRepository memberRepository;
+
+    public MemberService(MemoryMemberRepository memberRepository){
             this.memberRepository = memberRepository;
         }
         //SignIn Member
@@ -40,5 +41,4 @@ public class MemberService{
             return memberRepository.findById(memberId);
         }
     }
-
 

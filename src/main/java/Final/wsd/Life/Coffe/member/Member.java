@@ -1,14 +1,21 @@
 package Final.wsd.Life.Coffe.member;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Member {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
     private String name;
     private Grade grade;
 
-    public Member(Long id, String name, Grade grade) {
-        this.id = id;
-        this.name = name;
-        this.grade = grade;
+    public Member() {
     }
 
     public Long getId() {

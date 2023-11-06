@@ -1,12 +1,16 @@
 package Final.wsd.Life.Coffe.member;
 
+
+import org.springframework.stereotype.Repository;
+
 import java.util.*;
 
+@Repository
+
 public class MemoryMemberRepository implements MemberRepository {
+private static Map<Long,Member>store = new HashMap<>();
+private static long sequence  = 0l;
 
-    private static Map<Long,Member> store = new HashMap<>();
-
-    private static long sequence = 0L;
 
     @Override
     public Member save(Member member) {
@@ -19,10 +23,6 @@ public class MemoryMemberRepository implements MemberRepository {
     public Optional<Member> findById(Long id) {
         return Optional.ofNullable(store.get(id));
     }
-    @Override
-    public List<Member> findAll() {
-        return new ArrayList<>(store.values());
-    }
 
     @Override
     public Optional<Member> findByName(String name) {
@@ -31,7 +31,15 @@ public class MemoryMemberRepository implements MemberRepository {
                 .findAny();
     }
 
-    public void clearStore() {
-        store.clear();
+    @Override
+    public List<Member> findAll() {
+        return new ArrayList<>(store.values());
+    }
+
+    @Override
+    public String toString() {
+        return "MemoryMemberRepository{}";
     }
 }
+
+
