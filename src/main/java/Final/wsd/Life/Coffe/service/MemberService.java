@@ -11,34 +11,35 @@ import java.util.Optional;
 
 @Transactional
 
-public class MemberService{
+public class MemberService {
+    //private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
 
-    private final MemoryMemberRepository memberRepository;
-
-    public MemberService(MemoryMemberRepository memberRepository){
-            this.memberRepository = memberRepository;
-        }
-        //SignIn Member
-
-        public long join(Member member){
+    public MemberService(MemberRepository memberRepository){
+        this.memberRepository = memberRepository;
+    }
+    public Long join(Member member){
+        Long start = System.currentTimeMillis();
+        try {
             validDuplicateMember(member);
             memberRepository.save(member);
             return member.getId();
-        }
-
-        private void validDuplicateMember(Member member) {
-            Optional<Member> result = memberRepository.findByName(member.getName());
-            result.ifPresent(m -> {
-                throw new IllegalStateException("You are already a member ");
-            });
-        }
-
-        public List<Member> findMember(){
-            return memberRepository.findAll();
-        }
-
-        public Optional<Member> findOne(Long memberId){
-            return memberRepository.findById(memberId);
+        } finally {
+            Long finish = System.currentTimeMillis();
+            Long TimeMs = finish - start;
+            System.out.println("join " + TimeMs + "ms");
         }
     }
 
+    private void validDuplicateMember(Member member) {
+        Optional<Member> result = memberRepository.findByName(member.getName());
+        result.ifPresent(m -> { throw new IllegalStateException("You are already a member");});
+    }
+    public List<Member> findMembers(){
+        return memberRepository.findAll();
+
+    }
+    public Optional<Member> findOne(Long memberID){
+        return memberRepository.findById(memberID);
+    }
+}
