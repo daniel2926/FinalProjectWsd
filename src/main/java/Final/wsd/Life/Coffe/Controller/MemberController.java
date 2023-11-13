@@ -1,3 +1,6 @@
+package Final.wsd.Life.Coffe.controller;
+
+import Final.wsd.Life.Coffe.controller.MemberForm;
 import Final.wsd.Life.Coffe.member.Member;
 import Final.wsd.Life.Coffe.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +22,7 @@ public class MemberController {
 
     @GetMapping("/members/new")
     public String createForm(){
-        return "members/createMemberForm";
+        return "member/createMemberForm";
     }
 
     @PostMapping(value ="/members/new")
@@ -36,6 +39,6 @@ public class MemberController {
     public String list(Model model){
         List <Member> members = memberService.findMembers();
         model.addAttribute("members",members);
-        return "members/memberList";
+        return "member/memberList";
     }
 }

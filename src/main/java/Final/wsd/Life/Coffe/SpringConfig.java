@@ -1,7 +1,6 @@
 package Final.wsd.Life.Coffe;
 
 
-import Final.wsd.Life.Coffe.member.MemberRepo;
 import Final.wsd.Life.Coffe.member.MemberRepository;
 import Final.wsd.Life.Coffe.member.MemoryMemberRepository;
 import Final.wsd.Life.Coffe.service.MemberService;
@@ -10,17 +9,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SpringConfig {
-    //private final MemberRepository memberRepository;
-    private final MemberRepo memberRepository;
-
-    /*public SpringConfig(MemberRepository memberRepository) {
+    private final MemberRepository memberRepository;
+    public SpringConfig(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
-    }
-
-     */
-
-    public SpringConfig(MemberRepo memberRepository) {
-    this.memberRepository = memberRepository;
     }
 
     // private DataSource dataSource;
@@ -33,10 +24,10 @@ public class SpringConfig {
         */
 
 
-//    @Bean
-//    public MemberService memberService() {
-//        return new MemberService((memberRepository));
-//    }
+    @Bean
+    public MemberService memberService() {
+        return new MemberService((memberRepository));
+    }
 
    /* @Bean
     public MemberRepository memberRepository() {
