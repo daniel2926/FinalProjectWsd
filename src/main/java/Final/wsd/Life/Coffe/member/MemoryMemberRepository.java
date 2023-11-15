@@ -1,10 +1,6 @@
 package Final.wsd.Life.Coffe.member;
 
-
-
-
 import java.util.*;
-
 
 public class MemoryMemberRepository implements MemberRepository {
 
