@@ -2,6 +2,7 @@ package Final.wsd.Life.Coffe.controller;
 
 
 import Final.wsd.Life.Coffe.order.OrderService;
+import Final.wsd.Life.Coffe.order.OrderServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +13,9 @@ import java.security.PublicKey;
 
 public class OrderController {
 
-    private OrderService orderService;
+    private OrderServiceImpl orderService;
 
-    public OrderController(OrderService orderService) {
+    public OrderController(OrderServiceImpl orderService) {
         this.orderService = orderService;
     }
 
