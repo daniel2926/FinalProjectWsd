@@ -1,7 +1,6 @@
 package Final.wsd.Life.Coffe.service;
 
 import Final.wsd.Life.Coffe.product.Product;
-import Final.wsd.Life.Coffe.product.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,9 +13,10 @@ public class ProductService {
     @Autowired
     private ProductRepo productRepo;
 
-    public Product save(Product product){
-        return productRepo.save(product);
+    public ProductService(ProductRepo productRepo) {
+        this.productRepo = productRepo;
     }
+
     public Product findOne(String name){
         return productRepo.findById(name).get();
     }
@@ -33,7 +33,8 @@ public class ProductService {
         return productRepo.findByNameContains(name);
     }
 
-    public void save() {
+    public Product save(Product product) {
+        return productRepo.save(product);
 
     }
 }

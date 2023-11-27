@@ -3,27 +3,43 @@ package Final.wsd.Life.Coffe.service;
 import Final.wsd.Life.Coffe.member.Member;
 import Final.wsd.Life.Coffe.member.MemoryMemberRepository;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class MemberServiceTest {
+class MemberServiceTest {
 
     MemberService memberService;
     MemoryMemberRepository memberRepository ;
+    @BeforeEach
+    public void beforeEach(){
+        memberRepository = new MemoryMemberRepository();
+        memberService = new MemberService(memberRepository);
+    }
+    @AfterEach
+    public void afterEach(){
+        memberRepository.clearStore();
+    }
+
 
     @Test
-    void join(){
+
+    void join() {
+        //given
         Member member = new Member();
-        member.setName("Daniel");
+        member.setName("hello");
+        //when
         Long saveId = memberService.join(member);
+        //then
         Member findMember = memberRepository.findById(saveId).get();
         Assertions.assertThat(member.getName()).isEqualTo(findMember.getName());
+
     }
 
     @Test
-    public  void DuplicateMemberException() throws Exception {
+    public  void DuplicateMemberException() throws Exception{
         //given
         Member member1 = new Member();
         member1.setName("spring");
@@ -32,9 +48,25 @@ public class MemberServiceTest {
 
         //when
         memberService.join(member1);
-        IllegalStateException ex = assertThrows(IllegalStateException.class, () -> memberService.join(member2));
+        IllegalStateException ex = assertThrows(IllegalStateException.class,() -> memberService.join(member2));
         Assertions.assertThat(ex.getMessage()).isEqualTo("You are already a member");
+//        try{
+//            memberService.join(member2);
+//        }
+//        catch(IllegalStateException e){
+//            Assertions.assertThat(ex.getMessage()).isEqualTo("You are already a member");
+//
+//        }
 
+
+        //then
     }
 
+//    @Test
+//    void findMembers() {
+//    }
+//
+//    @Test
+//    void findOne() {
+//    }
 }

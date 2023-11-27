@@ -1,8 +1,5 @@
 package Final.wsd.Life.Coffe.discount;
 
-import Final.wsd.Life.Coffe.member.Grade;
-import Final.wsd.Life.Coffe.member.Member;
-
 //public class FixDiscountPolicy implements DiscountPolicy {
 //
 //    private int discountFixAmountSilver = 7500;

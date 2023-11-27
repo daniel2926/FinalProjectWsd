@@ -1,8 +1,5 @@
 package Final.wsd.Life.Coffe.discount;
 
-import Final.wsd.Life.Coffe.member.Grade;
-import Final.wsd.Life.Coffe.member.Member;
-
 //public class RateDiscountPolicy implements DiscountPolicy{
 //    int discountPercentSilver = 10;
 //    int discountPercentGold = 20;
